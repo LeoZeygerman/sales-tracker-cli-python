@@ -56,6 +56,21 @@ while True:
             if not found:
                 print(f'Ошибка в поиске товара.')
                 
+        if choice == 4:
+            search = input('Введите название или ID товара, который вы хотите найти: ')
+            data = load_data()
+            found = False
+            for user in data: 
+                if(
+                    str(user['new_id']) == search
+                    or user['name'] == search
+                ):
+                    found = True
+                    product_object = Product(user['new_id'], user['name'], user['price'], user['quantity'])
+                    product_object.get_info()
+            save_data(data)
+            if not found:
+                print(f'Ошибка в поиске товара.')
         
     except ValueError:
         print('Ошибка при вводе.')
