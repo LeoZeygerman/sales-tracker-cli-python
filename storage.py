@@ -2,7 +2,7 @@ import json
 
 def load_data():
     try:
-        with open('data/products.json', 'r') as f:
+        with open('data/product.json', 'r') as f:
             return json.load(f)
     except:
         return []

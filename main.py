@@ -30,6 +30,14 @@ while True:
             save_data(data)
             product_object = Product(new_id, name, price, quantity)
             product_object.get_info()
-        
+            
+        if choice == 2:
+            data = load_data()
+            for user in data:
+                print(f'ID: {user['new_id']} | Товар: {user['name']} | Цена: {user['price']} | Количество: {user['quantity']}')
+                
+        if choice == 3:
+            which_product = input('Введите название или ID продукта, который хотите продать: ')
+           
     except ValueError:
         print('Ошибка при вводе.')
