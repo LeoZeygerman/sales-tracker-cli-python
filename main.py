@@ -86,6 +86,10 @@ while True:
                     save_data(data)
                     print('Товар удален.')
                     break
+                
+        if choice == 6:
+            print('Программа завершена.')
+            exit()
         
     except ValueError:
         print('Ошибка при вводе.')
