@@ -72,5 +72,20 @@ while True:
             if not found:
                 print(f'Ошибка в поиске товара.')
         
+        if choice == 5:
+            search = input('Введите название или ID товара, который вы хотите найти: ')
+            data = load_data()
+            found = False
+            for user in data: 
+                if(
+                    str(user['new_id']) == search
+                    or user['name'] == search
+                ):
+                    found = True
+                    data.remove(user)
+                    save_data(data)
+                    print('Товар удален.')
+                    break
+        
     except ValueError:
         print('Ошибка при вводе.')
