@@ -15,4 +15,4 @@ class Product:
         self.quantity -= amount
         
     def add_product(self, amount):
-        self.quantity += amount
+        self.quantity += int(amount)

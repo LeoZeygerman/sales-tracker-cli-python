@@ -38,6 +38,24 @@ while True:
                 
         if choice == 3:
             which_product = input('Введите название или ID продукта, который хотите продать: ')
-           
+            data = load_data()
+            found = False
+            for user in data: 
+                if(
+                    str(user['new_id']) == which_product
+                    or user['name'] == which_product
+                    and int(user['quantity']) > 0
+                ):
+                    found = True
+                    product_object = Product(user['new_id'], user['name'], user['price'], user['quantity'])
+                    amount = int(input(f'Введите количество продукта {user['name']}, которое хотите продать: '))
+                    product_object.sell_product(amount)
+                    user['quantity'] = product_object.quantity
+                    print(f'Остаток продукта {user['name']}: {user['quantity']}')
+            save_data(data)
+            if not found:
+                print(f'Ошибка в поиске товара.')
+                
+        
     except ValueError:
         print('Ошибка при вводе.')
