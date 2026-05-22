@@ -7,7 +7,8 @@ while True:
         print('3.Продать товар')
         print('4.Найти товар')
         print('5.Удалить товар')
-        print('6.Выйти')
+        print('6.Изменить цену на товар')
+        print('7.Выйти')
         choice = int(input('Введите номер интересующей вас операции: '))
         
         if choice == 1:
@@ -88,6 +89,22 @@ while True:
                     break
                 
         if choice == 6:
+            search = input('Введите название или ID товара, который вы хотите найти: ')
+            data = load_data()
+            found = False
+            for user in data: 
+                if(
+                    str(user['new_id']) == search
+                    or user['name'] == search
+                ):
+                    new_price = int(input('Напишите новую цену: '))
+                    found = True
+                    product_object = Product(user['new_id'], user['name'], user['price'], user['quantity'])
+                    product_object.change_price(new_price)
+                    user['price'] = product_object.price
+            save_data(data)
+                
+        if choice == 7:
             print('Программа завершена.')
             exit()
         
